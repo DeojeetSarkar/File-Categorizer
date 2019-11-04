@@ -6,17 +6,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import cross_validate
 from sklearn.model_selection import train_test_split
 import pandas as pd
-# 11111111111111111111111111111111111111111111111111111111111111111111111111111111
 dest = r"C:\Users\me\Desktop\Project_deed"
-# 22222222222222222222222222222222222222222222222222222222222222222222222222222222
 files = os.listdir(dest)
-print(files)
+#print(files)
 os.chdir(dest)
-# # Read contents of current file
-# # for i in files:
-# #     with open (i) as f:
-# #         print(i, f.read())
-# 3333333333333333333333333333333333333333333333333333333333333333333333333333333
 os.mkdir('Audio')
 os.mkdir('Zipped')
 os.mkdir('Data')
@@ -26,14 +19,11 @@ os.mkdir('Web_Related')
 os.mkdir('Presentation')
 os.mkdir('Programming')
 os.mkdir('Video')
-# 4444444444444444444444444444444444444444444444444444444444444444444444444444444
 extension = []
 for i in range(len(files)):
     x = files[i].split('.',5)
     extension.append(x[-1])
-print(extension)
-# 5555555555555555555555555555555555555555555555555555555555555555555555555555555
-
+#print(extension)
 df = pd.read_csv('data_set.txt')
 X = np.array(df.drop(['class'],1))
 y = np.array(df['class'])
@@ -44,7 +34,7 @@ clf = KNeighborsClassifier()
 clf.fit(X_train,y_train)
 
 accuracy = clf.score(X_test,y_test)
-print(accuracy)
+#print(accuracy)
 
 
 
@@ -58,12 +48,12 @@ for i in range(len(files)):
     for i in hist:
         chist.append(i)
     cist.append(chist)
-    print(hist)
-print(hist[0])
-print(cist)
+#    print(hist)
+#print(hist[0])
+#print(cist)
 
 prediction = clf.predict(cist)
-print(prediction)
+#print(prediction)
 
 dest1_loc = os.path.join(dest, "Audio")
 dest2_loc = os.path.join(dest, "Zipped")
@@ -78,8 +68,8 @@ dest9_loc = os.path.join(dest, "Video")
 rediction = []
 for i in prediction:
     rediction.append(i)
-print(rediction)
-print(files)
+#print(rediction)
+#print(files)
 for i in range (len(rediction)):
     if rediction[i]//10 == 0:
         shutil.move(os.path.join(dest, files[i]), dest3_loc)
